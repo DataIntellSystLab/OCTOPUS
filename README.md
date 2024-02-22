@@ -5,16 +5,21 @@ The Oligomer-based Classifier of Taxonomic Operational and Pan-genome Units via 
 
 We provide two version of OCTOPUS: one (OCTOPUS_Android.java) is fully tailored to mobile devices and runs on Android OS, while another (OCTOPUS.java) is more general-purpose and faster (but uses unsafe code).
 
-OCTOPUS comes with two built-in bacterial databases: one includes all reference genomes from the Bacterial and Viral Bioinformatics Resource Center, whilst another includes the World Health Organization’s set of bacteria of concern for drug resistance.
+OCTOPUS comes with three built-in indexed bacterial databases elaborated from: 
+(1) all reference genomes from the Bacterial and Viral Bioinformatics Resource Center (OCTOPUS index downloadable at: );
+(2) the World Health Organization’s set of bacteria of concern for drug resistance (OCTOPUS index downloadable at: );
+(3) the MEGARes database, a hand-curated collection antimicrobial resistance genes (OCTOPUS index included in this GitHub repository).
 
 OCTOPUS runs from the command line as follows:
-  java -cp ".;octopus_android_jars/*" OCTOPUS_Android (or OCTOPUS for the alternative version) d:database_folder f:fastq_file (can be gzipped)
-and optionally
-  t:number_of_threads
-  o:output_file_name
-  s:probthreshold_or_minimum_hits (for classification, default is probability>0.75, any value >=1 will be minimum frequency of hits)
-  l:log2m_value (for HyperLogLog)
-  h or help or -h or -help to print this help
+- java -cp ".;octopus_android_jars/*" OCTOPUS_Android (or OCTOPUS for the alternative version) d:database_folder f:fastq_file (can be gzipped)
+- and optionally
+  - t:number_of_threads
+  - o:output_file_name
+  - s:probthreshold_or_minimum_hits (for classification, default is probability>0.75, any value >=1 will be minimum frequency of hits)
+  - l:log2m_value (for HyperLogLog)
+  - h or help or -h or -help to print instructions
+ 
+The output file
 
 Other databases can be created using the ancillary tools for k-mer extraction and indexing (GenomesToKmers.java, BuildOCTOPUSdb.java). A new database can be created from a multi FASTA file or a folder containing multiple FASTA files (one for each genome). Taxonomy tree is not needed, since OCTOPUS perform and internal clustering.
 
