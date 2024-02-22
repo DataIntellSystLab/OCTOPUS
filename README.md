@@ -13,7 +13,7 @@ OCTOPUS runs from the command line as follows:
 - GENERAL PURPOSE: java -cp ".;octopus_android_jars/*" OCTOPUS_Android d:database_folder f:fastq_file (can be gzipped)
 - ANDROID: java -cp ".;octopus_jars/*" OCTOPUS_Android d:database_folder f:fastq_file (can be gzipped)
 - Please use -cp ".:octopus_jars/*" or ".:octopus_android_jars/*" when running on Linux/UNIX
-- additional command line options include
+- Additional command line options include
   - t:number_of_threads
   - o:output_file_name
   - s:probthreshold_or_minimum_hits (for classification, default is probability>0.75, any value >=1 will be minimum frequency of hits)
