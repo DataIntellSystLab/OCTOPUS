@@ -5,10 +5,9 @@ The Oligomer-based Classifier of Taxonomic Operational and Pan-genome Units via 
 
 We provide two version of OCTOPUS: one (OCTOPUS_Android.java) is fully tailored to mobile devices and runs on Android OS, while another (OCTOPUS.java) is more general-purpose and faster (but uses unsafe code).
 
-OCTOPUS comes with three built-in indexed bacterial databases elaborated from: 
-(1) all reference genomes from the Bacterial and Viral Bioinformatics Resource Center (OCTOPUS index downloadable at: );
-(2) the World Health Organization’s set of bacteria of concern for drug resistance (OCTOPUS index downloadable at: );
-(3) the MEGARes database, a hand-curated collection antimicrobial resistance genes (OCTOPUS index included in this GitHub repository).
+OCTOPUS comes with three built-in indexed bacterial databases elaborated from: (1) all reference genomes from the Bacterial and Viral Bioinformatics Resource Center (OCTOPUS index downloadable at: ); (2) the World Health Organization’s set of bacteria of concern for drug resistance (OCTOPUS index downloadable at: ); (3) the MEGARes database, a hand-curated collection antimicrobial resistance genes (OCTOPUS index included in this GitHub repository).
+
+Other databases can be created using the ancillary tools for k-mer extraction and indexing (GenomesToKmers.java, BuildOCTOPUSdb.java). A new database can be created from a multi FASTA file or a folder containing multiple FASTA files (one for each genome). Taxonomy tree is not needed, since OCTOPUS perform and internal clustering. There is a file named "info.txt" in the "_OCTOPUSdb" folder that links OCTOPUS' taxon IDs and clusters to the original genomes' names of the input FASTA(s).
 
 OCTOPUS runs from the command line as follows:
 - java -cp ".;octopus_android_jars/*" OCTOPUS_Android (or OCTOPUS for the alternative version) d:database_folder f:fastq_file (can be gzipped)
@@ -19,9 +18,9 @@ OCTOPUS runs from the command line as follows:
   - l:log2m_value (for HyperLogLog)
   - h or help or -h or -help to print instructions
  
-The output file
-
-Other databases can be created using the ancillary tools for k-mer extraction and indexing (GenomesToKmers.java, BuildOCTOPUSdb.java). A new database can be created from a multi FASTA file or a folder containing multiple FASTA files (one for each genome). Taxonomy tree is not needed, since OCTOPUS perform and internal clustering.
+The output consists of two files:
+- inputfilename_mappedGenomes.csv (taxonId, taxonName, genomeCoverage, readDepth)
+- inputfilename_mappedReads.cvs (readId, taxonID, minimizKmerHits|totMinimizKmers)
 
 GenomesToKmers runs from the command line as follows:
 - (Windows) java -Xmx[desired_ram] -cp ".;octopus_jars/*" GenomesToKmers genomes_fasta_file_or_folder (will use default parameters)
