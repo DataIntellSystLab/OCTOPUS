@@ -3,15 +3,17 @@ Disk-based, Multiplatform, Mobile-friendly Metagenomics Classifier in Java
 
 The Oligomer-based Classifier of Taxonomic Operational and Pan-genome Units via Singletons (OCTOPUS) is a platform-friendly software for portable metagenomic analysis of Nanopore data. OCTOPUS is written in Java, reimplements several features of the popular Kraken2 and KrakenUniq software, with original components apt to improve classification performance on incomplete/sampled databases (e.g., family subsets of bacteria), making it ideal for running on smartphones or tablets.
 
-We provide two version of OCTOPUS: one (OCTOPUS_Android.java) is fully tailored to mobile devices and runs on Android OS, while another (OCTOPUS.java) is more general-purpose and faster (but uses unsafe code).
+We provide two version of OCTOPUS: one (OCTOPUS_Android.java) is fully tailored to mobile devices and used as codebase to develop the Android OS app, while another (OCTOPUS.java) is more general-purpose and faster (but uses unsafe code).
 
 OCTOPUS comes with three built-in indexed bacterial databases elaborated from: (1) all reference genomes from the Bacterial and Viral Bioinformatics Resource Center (OCTOPUS index downloadable at: ); (2) the World Health Organization’s set of bacteria of concern for drug resistance (OCTOPUS index downloadable at: ); (3) the MEGARes database, a hand-curated collection antimicrobial resistance genes (OCTOPUS index included in this GitHub repository).
 
 Other databases can be created using the ancillary tools for k-mer extraction and indexing (GenomesToKmers.java, BuildOCTOPUSdb.java). A new database can be created from a multi FASTA file or a folder containing multiple FASTA files (one for each genome). Taxonomy tree is not needed, since OCTOPUS perform and internal clustering. There is a file named "info.txt" in the "_OCTOPUSdb" folder that links OCTOPUS' taxon IDs and clusters to the original genomes' names of the input FASTA(s).
 
 OCTOPUS runs from the command line as follows:
-- java -cp ".;octopus_android_jars/*" OCTOPUS_Android (or OCTOPUS for the alternative version) d:database_folder f:fastq_file (can be gzipped)
-- and optionally
+- GENERAL PURPOSE: java -cp ".;octopus_android_jars/*" OCTOPUS_Android d:database_folder f:fastq_file (can be gzipped)
+- ANDROID: java -cp ".;octopus_jars/*" OCTOPUS_Android d:database_folder f:fastq_file (can be gzipped)
+- Please use -cp ".:octopus_jars/*" or ".:octopus_android_jars/*" when running on Linux/UNIX
+- additional command line options include
   - t:number_of_threads
   - o:output_file_name
   - s:probthreshold_or_minimum_hits (for classification, default is probability>0.75, any value >=1 will be minimum frequency of hits)
