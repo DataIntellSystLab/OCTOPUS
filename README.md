@@ -5,7 +5,7 @@ The Oligomer-based Classifier of Taxonomic Operational and Pan-genome Units via 
 
 We provide two version of OCTOPUS: one (OCTOPUS_Android.java) is fully tailored to mobile devices and used as codebase to develop the Android OS app, while another (OCTOPUS.java) is more general-purpose and faster (but uses unsafe code).
 
-OCTOPUS comes with three built-in indexed bacterial databases elaborated from: (1) all reference genomes from the Bacterial and Viral Bioinformatics Resource Center (OCTOPUS index downloadable at: ); (2) the World Health Organization’s set of bacteria of concern for drug resistance (OCTOPUS index downloadable at: ); (3) the MEGARes database, a hand-curated collection antimicrobial resistance genes (OCTOPUS index included in this GitHub repository).
+OCTOPUS comes with three built-in indexed bacterial databases elaborated from: (1) all reference genomes from the Bacterial and Viral Bioinformatics Resource Center (OCTOPUS index downloadable at: https://osf.io/jgw9z/); (2) the World Health Organization’s set of bacteria of concern for drug resistance (OCTOPUS index downloadable at: https://osf.io/jgw9z/); (3) the MEGARes database, a hand-curated collection antimicrobial resistance genes (OCTOPUS index included in this GitHub repository).
 
 Other databases can be created using the ancillary tools for k-mer extraction and indexing (GenomesToKmers.java, BuildOCTOPUSdb.java). A new database can be created from a multi FASTA file or a folder containing multiple FASTA files (one for each genome). Taxonomy tree is not needed, since OCTOPUS perform and internal clustering. There is a file named "info.txt" in the "_OCTOPUSdb" folder that links OCTOPUS' taxon IDs and clusters to the original genomes' names of the input FASTA(s).
 
@@ -45,6 +45,10 @@ BuildOCTOPUSdb runs from the command line as follows:
   - The -g option will shrink the database to the desired GB size
   - The desired_ram should be ~5G for datasets up to 50 million kmers, ~10G up to 100 million kmers, ~20G for up to 200 million kmers, etc. Even with suboptimal RAM allocation, it will work with any kmer cardinality but the minimal perfect hashing will be less efficient.
   - -h or -help to print instructions
+
+Assembly accession IDs and associated labels of the BV-BRC bacterial DB are available in data/BV-BRC_taxon_id_Assembly_accession_Species.txt.
+
+Assembly accession IDs of the WHO DB are available in data/WHO_Assembly_accession_Species.txt.
 
 
 
